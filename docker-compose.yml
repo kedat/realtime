@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  translation-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: translation-server
+    ports:
+      - "8765:8765" # WebSocket server
+      - "3000:3000" # Next.js frontend
+    environment:
+      - TRANSFORMERS_OFFLINE=1
+      - TRANSFORMERS_CACHE=/app/models
+      - HF_HOME=/app/models
+      - NODE_ENV=production
+    volumes:
+      - models_cache:/app/models
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import socket; socket.create_connection(('localhost', 8765), timeout=5)",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Optional: Nginx reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: translation-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro # Add your SSL certificates here
+    depends_on:
+      - translation-server
+    restart: unless-stopped
+    profiles:
+      - production
+
+volumes:
+  models_cache:
+    driver: local

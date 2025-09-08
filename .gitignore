@@ -1,0 +1,183 @@
+# Real-Time Bidirectional Translation System - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+backend_venv/
+.venv/
+
+# Translation models (large files - download on deployment)
+models/
+*.bin
+*.model
+*.vocab
+*.spm
+
+# PyTorch models and checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.marscode/
+
+# Next.js
+nextjs-app/.next/
+nextjs-app/out/
+nextjs-app/.swc/
+
+# Dependencies
+nextjs-app/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Logs
+*.log
+logs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.tmp/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Hugging Face cache
+.cache/huggingface/
+transformers_cache/
+
+# Audio files (if any test recordings)
+*.wav
+*.mp3
+*.mp4
+*.avi
+*.flac
+*.aac
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Sensitive data
+config.json
+secrets.json
+*.key
+*.pem
+*.crt
+
+# Development and testing
+test_recordings/
+debug/
+scratch/
+experiments/
+
+# Docker (if using Docker deployment)
+.dockerignore
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Lock files (commit package-lock.json but ignore others)
+nextjs-app/yarn.lock
+Pipfile.lock
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Generated documentation
+docs/_build/
+
+# Profiling
+*.prof
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Local configuration
+local_settings.py
+settings_local.py
+config_local.py
